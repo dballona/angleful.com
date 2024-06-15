@@ -1,0 +1,23 @@
+/* react-phone-number-input */
+.PhoneInput {
+  @apply outline-none rounded border border-solid border-opaque;
+
+  & .PhoneInputCountry {
+    padding-left: 0.8rem;
+  }
+
+  & .PhoneInputCountryIcon {
+    width: 1.2rem;
+    height: 1rem;
+  }
+
+  & .PhoneInputCountryIcon--border {
+    box-shadow: 0 0 0 transparent;
+    background: transparent;
+  }
+
+  & input[type='tel'] {
+    min-width: calc(100% - 10rem); /* make it fit inside the box */
+    border: 0 none;
+  }
+}
