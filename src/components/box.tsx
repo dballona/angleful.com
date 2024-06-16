@@ -18,7 +18,7 @@ export default function Box({
   if (subtitleColor) subtitleClassNames.push(`text-${subtitleColor}-500`);
 
   return (
-    <div className="w-full p-8 border border-solid bg-opaque border-opaque rounded-lg">
+    <div className="w-full p-8 border border-solid border-opaque rounded-lg">
       <h3>{title}</h3>
       {subtitle && (
         <h4 className={subtitleClassNames.join(' ')}>{subtitle}</h4>

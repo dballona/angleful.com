@@ -1,7 +1,8 @@
 'use client';
 
 import { ReactNode } from 'react';
-import FormHint from './form-hint';
+import FormHint from '@/components/form-hint';
+import FormError from '@/components/form-error';
 
 export default function FormItem({
   id,
@@ -29,7 +30,7 @@ export default function FormItem({
       )}
       {children}
       {hint && <FormHint>{hint}</FormHint>}
-      {errors && <span>{errors.join(', ')}</span>}
+      {errors && <FormError>{errors.join(', ')}</FormError>}
     </div>
   );
 }

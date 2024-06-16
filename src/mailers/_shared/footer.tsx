@@ -1,7 +1,7 @@
 import { Container, Text } from '@react-email/components';
 import { footerStyle } from '@/mailers/_shared/styles';
 
-export default function Header() {
+export default function Footer() {
   return (
     <Container style={footerStyle}>
       <Text>

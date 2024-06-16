@@ -2,8 +2,8 @@ import '@/styles/index.css';
 import '@/styles/vendor.css';
 
 import { Providers } from '@/providers';
-import Header from '@/components/header';
 import { ReactNode } from 'react';
+import Alert from '@/components/alert';
 import Main from '@/components/main';
 import Menu from '@/components/menu';
 import GoogleAnalyticsScript from '@/components/google-analytics-script';
@@ -21,11 +21,10 @@ export default async function RootLayout({
       </head>
       <body className={sansFont.className}>
         <Providers>
+          <Alert />
           <div className="flex">
             <Menu />
             <Main>
-              <Header />
-
               <div className="container">{children}</div>
             </Main>
           </div>

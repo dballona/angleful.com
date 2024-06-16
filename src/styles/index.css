@@ -16,7 +16,7 @@
   body {
     font-weight: theme(fontWeight.light);
     color: theme(colors.gray.700);
-    background: theme(colors.gray.100);
+    background: theme(colors.white);
 
     &:before {
       background: radial-gradient(
@@ -222,10 +222,6 @@
   }
 
   .border-opaque {
-    border-color: rgba(0, 0, 0, 15%);
-  }
-
-  .bg-opaque {
-    @apply bg-gray-100 bg-opacity-30 backdrop-blur-lg;
+    @apply border-black border-opacity-15;
   }
 }
