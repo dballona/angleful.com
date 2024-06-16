@@ -9,10 +9,9 @@ import { AccountRole } from '@/db/types';
 async function LinksForAccount() {
   return (
     <>
-      <li><Link href="/account">Home</Link></li>
       <li><Link href="/account/profile">Profile</Link></li>
       <li><Link href="/account/work-experience">Work Experience</Link></li>
-      <li><Link href="/">Help & Support</Link></li>
+      <li className="mt-4"><Link href="/">Help & Support</Link></li>
     </>
   );
 }
@@ -42,7 +41,7 @@ export default async function Menu() {
         <ul className="[&>li]:mb-1">
           {isAccount && <LinksForAccount />}
           {isAdmin && <LinksForAdmin />}
-          <li className="mt-6">
+          <li className="mt-4">
             <AccountSignOutButton />
           </li>
         </ul>

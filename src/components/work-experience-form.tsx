@@ -45,6 +45,7 @@ export default function WorkExperienceForm({
       onSuccess: async response => {
         const workExperience = await response.json();
         alert.success(`Successfully created work experience.`);
+        setShowModal(false);
         router.refresh();
       },
     });
@@ -104,7 +105,7 @@ export default function WorkExperienceForm({
           setShowModal(true)
         }}
       >
-        <Icon name="plus" style={{ width: '.835rem', top: -1 }} /> Add a new experience
+        Add a new experience
       </Button>
 
       {showModal && (

@@ -102,7 +102,6 @@
 @layer components {
 
   .form {
-
     & input[type='text'],
     & input[type='tel'],
     & input[type='number'],
