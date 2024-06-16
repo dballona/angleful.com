@@ -1,6 +1,6 @@
 /* react-phone-number-input */
 .PhoneInput {
-  @apply outline-none rounded border border-solid border-opaque;
+  @apply outline-none rounded border border-solid border-black border-opacity-15;
 
   & .PhoneInputCountry {
     padding-left: 0.8rem;

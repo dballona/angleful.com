@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://angleful.com';
+export const SITE_URL = process.env.SITE_URL;
 export const CONTACT_EMAIL = 'hi@angleful.com';
 
 import { Open_Sans, Noto_Serif } from 'next/font/google';
@@ -14,3 +14,10 @@ export const serifFont = Noto_Serif({
 });
 
 export type Color = 'green' | 'yellow' | 'red' | 'purple' | 'sky';
+
+export const MIN_YEAR = 1950;
+export const MAX_YEAR = new Date().getFullYear();
+export const POSSIBLE_YEARS = Array.from(
+  { length: (MAX_YEAR - MIN_YEAR) + 1 },
+  (_value, index) => MIN_YEAR + index
+).reverse();

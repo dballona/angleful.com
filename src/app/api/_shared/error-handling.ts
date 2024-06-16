@@ -1,3 +1,5 @@
+import { NextRequest } from "next/server";
+
 type FieldErrors = {
   [key: string]: string[] | undefined;
 };
@@ -24,9 +26,9 @@ export class ApplicationError extends Error {
 }
 
 export function withErrorHandling(
-  fn: (request: Request, ...args: any) => Promise<Response>,
+  fn: (request: NextRequest, ...args: any) => Promise<Response>,
 ) {
-  return async function (request: Request, ...args: any) {
+  return async function (request: NextRequest, ...args: any) {
     try {
       return await fn(request, ...args);
     } catch (error) {

@@ -61,7 +61,7 @@ export interface ProfileTable {
   accountId: string;
   city: string;
   contactEmail: string;
-  contactPhone: string;
+  contactPhone: string | null;
   country: string;
   createdAt: Generated<Timestamp>;
   firstName: string;
@@ -71,9 +71,27 @@ export interface ProfileTable {
   websiteUrl: string | null;
 }
 
+export type WorkExperience = Selectable<WorkExperienceTable>;
+
+export interface WorkExperienceTable {
+  accountId: string;
+  city: string;
+  companyName: string;
+  country: string;
+  createdAt: Generated<Timestamp>;
+  endMonth: number | null;
+  endYear: number | null;
+  id: Generated<string>;
+  startMonth: number | null;
+  startYear: number;
+  title: string;
+  updatedAt: Generated<Timestamp>;
+}
+
 export interface DB {
   account: AccountTable;
   accountPasswordReset: AccountPasswordResetTable;
   objectStorageFile: ObjectStorageFileTable;
   profile: ProfileTable;
+  workExperience: WorkExperienceTable;
 }

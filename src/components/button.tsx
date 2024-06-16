@@ -8,6 +8,7 @@ export default function Button({
   disabled = false,
   children,
   color,
+  size,
   href,
   className,
   onClick,
@@ -16,17 +17,27 @@ export default function Button({
   children: ReactNode;
   className?: string;
   color?: Color;
+  size?: 'sm'
   href?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }) {
   const router = useRouter();
 
   const buttonClassNames = [
-    "pt-[0.3rem] pb-[0.4rem] px-3",
     "cursor-pointer leading-6 font-normal",
     "rounded inline-block",
     "border border-solid",
   ];
+
+  if (!size) {
+    buttonClassNames.push.apply(buttonClassNames, [
+      "pt-[0.3rem] pb-[0.4rem] px-3"
+    ])
+  } else if (size == "sm") {
+    buttonClassNames.push.apply(buttonClassNames, [
+      "pt-[0.15rem] pb-[0.2rem] px-2 text-sm"
+    ])
+  }
 
   if (!color) {
     buttonClassNames.push.apply(buttonClassNames, [

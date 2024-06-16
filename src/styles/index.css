@@ -21,7 +21,7 @@
     &:before {
       background: radial-gradient(
         ellipse at top right,
-        rgba(var(--primary-color-rgb), 10%) 0%,
+        rgba(var(--primary-color-rgb), 20%) 0%,
         transparent 50%,
         transparent 100%
       );
@@ -37,7 +37,7 @@
     &:after {
       background: radial-gradient(
         ellipse at top left,
-        rgba(var(--primary-color-rgb), 20%) 0%,
+        rgba(var(--primary-color-rgb), 25%) 0%,
         transparent 50%,
         transparent 100%
       );
@@ -113,7 +113,7 @@
     & input[type='date'],
     & select,
     & textarea {
-      background: rgba(255, 255, 255, 10%);
+      background: rgba(255, 255, 255, 20%);
       color: theme(colors.gray.700);
       padding-top: 0.3rem;
       padding-bottom: 0.4rem;
@@ -121,7 +121,7 @@
       padding-right: .75rem;
       vertical-align: top;
       width: 100%;
-      @apply outline-none rounded border border-solid border-opaque;
+      @apply outline-none rounded border border-solid border-black border-opacity-15;
   
       &:-webkit-autofill::first-line,
       &:-webkit-autofill,
@@ -219,9 +219,5 @@
       color: theme(colors.sky.600);
       border-color: theme(colors.sky.600);
     }
-  }
-
-  .border-opaque {
-    @apply border-black border-opacity-15;
   }
 }

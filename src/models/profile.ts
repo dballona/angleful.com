@@ -25,12 +25,12 @@ export const ProfileSchema = z
 
 export type ProfileParams = z.infer<typeof ProfileSchema>;
 
-export async function getProfileByAccountId(accountId: string): Promise<Profile> {
+export async function getProfileByAccountId(accountId: string): Promise<Profile | undefined> {
   return await db
     .selectFrom('profile')
     .selectAll()
     .where('accountId', '=', accountId)
-    .executeTakeFirstOrThrow();
+    .executeTakeFirst();
 }
 
 export async function createProfile(

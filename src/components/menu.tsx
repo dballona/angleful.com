@@ -10,9 +10,9 @@ async function LinksForAccount() {
   return (
     <>
       <li><Link href="/account">Home</Link></li>
-      <li>
-        <Link href="/">Help & Support</Link>
-      </li>
+      <li><Link href="/account/profile">Profile</Link></li>
+      <li><Link href="/account/work-experience">Work Experience</Link></li>
+      <li><Link href="/">Help & Support</Link></li>
     </>
   );
 }
@@ -33,13 +33,13 @@ export default async function Menu() {
   const isAccount = currentAccount!.role === AccountRole.Account;
 
   return (
-    <aside className="w-[var(--menu-width)] min-h-screen items-stretch border-r border-solid border-opaque">
+    <aside className="w-[var(--menu-width)] min-h-screen items-stretch border-r border-solid border-black border-opacity-15 bg-white bg-opacity-15">
       <div className="mt-16 px-8 pb-4">
         <Logo width={110} height={60} />
         {isAdmin && <Badge color="red">Admin</Badge>}
       </div>
       <nav className="px-8">
-        <ul>
+        <ul className="[&>li]:mb-1">
           {isAccount && <LinksForAccount />}
           {isAdmin && <LinksForAdmin />}
           <li className="mt-6">

@@ -35,7 +35,7 @@ export default function PageTitle({
               onClick={e => action.onClick && action.onClick(e)}
               disabled={action.disabled ?? undefined}
             >
-              {action.icon && <Icon name={action.icon} style={{ width: 20, top: -1, left: -1 }} />}
+              {action.icon && <Icon name={action.icon} style={{ width: 15, top: -1, left: -1 }} />}
               {action.label}
             </Button>
           </span>
