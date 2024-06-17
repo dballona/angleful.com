@@ -42,10 +42,9 @@ export default function Button({
   if (!color) {
     buttonClassNames.push.apply(buttonClassNames, [
       "text-black",
-      "border-gray-400",
-      "bg-gradient-to-b",
-      "from-white via-30% to-gray-200 to-100%",
-      "enabled:hover:from-white enabled:hover:via-10% enabled:hover:to-gray-100"
+      "border-slate-400",
+      "bg-gradient-to-b from-white via-30% to-slate-200 to-100%",
+      "enabled:hover:from-white enabled:hover:via-10% enabled:hover:to-slate-100"
     ])
   } else if (color == 'red') {
     buttonClassNames.push.apply(buttonClassNames, [

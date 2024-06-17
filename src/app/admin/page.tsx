@@ -4,7 +4,7 @@ import { getCurrentAccount } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AdminHome() {
+export default async function AdminHomePage() {
   const currentAccount = await getCurrentAccount();
   if (!currentAccount) return <></>;
 

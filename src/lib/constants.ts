@@ -21,3 +21,18 @@ export const POSSIBLE_YEARS = Array.from(
   { length: (MAX_YEAR - MIN_YEAR) + 1 },
   (_value, index) => MIN_YEAR + index
 ).reverse();
+
+export const MONTH_NAMES = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+]

@@ -16,6 +16,7 @@ import Table from '@/components/table';
 import Button from './button';
 import { Icon } from './icon';
 import Modal from './modal';
+import { workExperienceTimespan } from '@/helpers/work-experience-helper';
 
 export default function WorkExperienceForm({
   workExperiences,
@@ -68,7 +69,7 @@ export default function WorkExperienceForm({
                 {workExperience.title} at {workExperience.companyName}
               </td>
               <td>
-                {workExperience.startMonth}/{workExperience.startYear} - {workExperience.endMonth}/{workExperience.endYear}
+                {workExperienceTimespan(workExperience)}
               </td>
               <td>
                 {workExperience.city}, {workExperience.country}
@@ -110,15 +111,15 @@ export default function WorkExperienceForm({
 
       {showModal && (
         <Modal
-          title={workExperience.id ? `Editing Work Experience` : 'Adding Work Experience'}
+          title={workExperience.id ? `Edit Work Experience` : 'Add Work Experience'}
           width={800}
           closeModal={() => {
             setShowModal(false)
           }}
         >
           <form className="form" onSubmit={onSubmit}>
-            <div className="grid grid-cols-6 gap-x-4">
-              <div className="col-span-3">
+            <div className="grid grid-cols-4 gap-x-4">
+              <div className="col-span-2">
                 <FormItem
                   id="title"
                   label="Title"
@@ -133,7 +134,7 @@ export default function WorkExperienceForm({
                 </FormItem>
               </div>
 
-              <div className="col-span-3">
+              <div className="col-span-2">
                 <FormItem
                   id="companyName"
                   label="Company Name"
@@ -148,7 +149,7 @@ export default function WorkExperienceForm({
                 </FormItem>
               </div>
 
-              <div className="col-span-3">
+              <div className="col-span-2">
                 <FormItem
                   id="city"
                   label="City"
@@ -163,7 +164,7 @@ export default function WorkExperienceForm({
                 </FormItem>
               </div>
 
-              <div className="col-span-3">
+              <div className="col-span-2">
                 <FormItem
                   id="country"
                   label="Country"
@@ -197,7 +198,7 @@ export default function WorkExperienceForm({
                 </FormItem>
               </div>
 
-              <div className="col-span-2">
+              <div className="col-span-1">
                 <FormItem
                   id="startYear"
                   label="Start Year"
@@ -225,7 +226,7 @@ export default function WorkExperienceForm({
                 </FormItem>
               </div>
 
-              <div className="col-span-2">
+              <div className="col-span-1">
                 <FormItem
                   id="endYear"
                   label="End Year"

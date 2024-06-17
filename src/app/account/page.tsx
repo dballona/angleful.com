@@ -8,7 +8,7 @@ import { getLinkedInSignInUrl, getLinkedInUserInfo } from '@/lib/linkedin';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AdminHome() {
+export default async function AccountHomePage() {
   const currentAccount = await getCurrentAccount();
   const linkedInSignInUrl = getLinkedInSignInUrl();
   if (!currentAccount) return <></>;

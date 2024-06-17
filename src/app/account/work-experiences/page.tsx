@@ -7,7 +7,7 @@ import { getWorkExperiencesByAccountId } from '@/models/work-experience';
 
 export const dynamic = 'force-dynamic';
 
-export default async function NewBusinessPage() {
+export default async function AccountWorkExperiencesPage() {
   const currentAccount = await getCurrentAccount();
   const countries = await getCountries();
 

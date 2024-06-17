@@ -3,17 +3,17 @@ import PageContent from '@/components/page-content';
 import PageTitle from '@/components/page-title';
 import { getCurrentAccount, getPathNamespaceForAccount } from '@/lib/auth';
 import { getCountries } from '@/models/country';
-import { getProfileByAccountId } from '@/models/profile';
+import { maybeProfileByAccountId } from '@/models/profile';
 import { Profile } from '@/db/types';
 
 export const dynamic = 'force-dynamic';
 
-export default async function NewBusinessPage() {
+export default async function AccountProfilePage() {
   const currentAccount = await getCurrentAccount();
   const pathNamespace = await getPathNamespaceForAccount(currentAccount!);
   const countries = await getCountries();
 
-  const profile = await getProfileByAccountId(currentAccount!.id) || {
+  const profile = await maybeProfileByAccountId(currentAccount!.id) || {
     firstName: currentAccount!.firstName,
     lastName: currentAccount!.lastName,
     contactEmail: currentAccount!.email,

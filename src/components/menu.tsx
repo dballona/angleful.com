@@ -10,7 +10,9 @@ async function LinksForAccount() {
   return (
     <>
       <li><Link href="/account/profile">Profile</Link></li>
-      <li><Link href="/account/work-experience">Work Experience</Link></li>
+      <li><Link href="/account/work-experiences">Work Experiences</Link></li>
+      <li><Link href="/account/work-experiences">Education</Link></li>
+      <li className="mt-4"><Link href="/account/resume">Resume</Link></li>
       <li className="mt-4"><Link href="/">Help & Support</Link></li>
     </>
   );
@@ -31,8 +33,14 @@ export default async function Menu() {
   const isAdmin = currentAccount!.role === AccountRole.Admin;
   const isAccount = currentAccount!.role === AccountRole.Account;
 
+  const menuHtmlClasses = [
+    "w-[var(--menu-width)] min-h-screen items-stretch",
+    "border-r border-solid border-black border-opacity-15 bg-white bg-opacity-30",
+    "print:hidden"
+  ]
+
   return (
-    <aside className="w-[var(--menu-width)] min-h-screen items-stretch border-r border-solid border-black border-opacity-15 bg-white bg-opacity-15">
+    <aside className={menuHtmlClasses.join(' ')}>
       <div className="mt-16 px-8 pb-4">
         <Logo width={110} height={60} />
         {isAdmin && <Badge color="red">Admin</Badge>}
