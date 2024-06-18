@@ -6,7 +6,7 @@ import { getRequestParams } from '@/app/api/_shared/request-params';
 import { withAuthenticatedAccount } from '@/app/api/_shared/auth-handling';
 import { getCurrentAccount } from '@/lib/auth';
 
-import { updateWorkExperience, WorkExperienceParams, WorkExperienceSchema } from '@/models/work-experience';
+import { deleteWorkExperience, updateWorkExperience, WorkExperienceParams, WorkExperienceSchema } from '@/models/work-experience';
 
 export const PUT = withErrorHandling(
   withAuthenticatedAccount(
@@ -16,11 +16,21 @@ export const PUT = withErrorHandling(
       return updateWorkExperience(params.id, {
         ...validatedParams,
       }).then(async business => {
-        return Response.json({ business });
+        return Response.json({ business }, { status: 200 });
       });
     },
   ),
 );
+
+export const DELETE = withErrorHandling(
+  withAuthenticatedAccount(
+    async (req: Request, { params }: { params: { id: string } }) => {
+      return deleteWorkExperience(params.id).then(() => {
+        return Response.json({}, { status: 204 });
+      });
+    },
+  )
+)
 
 async function getValidatedParams(req: Request): Promise<WorkExperienceParams> {
   const formData = await req.formData();

@@ -39,6 +39,15 @@ export default function WorkExperienceForm({
     setMethod(workExperience.id ? "PUT" : "POST")
   }, [workExperience])
 
+  function deleteWorkExperience(workExperience: WorkExperience) {
+    fetch(`/api/work-experiences/${workExperience.id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      alert.success("Successfully deleted work experience");
+      router.refresh();
+    });
+  }
+
   const { validationErrors, isSubmittingForm, onSubmit } =
     useForm<WorkExperienceParams>({
       url,
@@ -89,7 +98,10 @@ export default function WorkExperienceForm({
                 <Button
                   className="ml-2"
                   size="sm"
-                  onClick={() => null}
+                  onClick={async () => {
+                    if (!confirm('Are you sure?')) return;
+                    deleteWorkExperience(workExperience)
+                  }}
                 >
                   <Icon name="delete" style={{ width: '.835rem', top: -1 }} /> Delete
                 </Button>
@@ -100,7 +112,7 @@ export default function WorkExperienceForm({
       </Table>
 
       <Button
-        className="mb-4"
+        className="mb-4 mt-2"
         onClick={() => {
           setWorkExperience({} as WorkExperience)
           setShowModal(true)

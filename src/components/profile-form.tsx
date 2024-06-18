@@ -20,9 +20,7 @@ export default function ProfileForm({
   profile?: Partial<Profile>;
   countries: Country[];
 }) {
-  const router = useRouter();
   const alert = useContext(AlertContext);
-  const pathNamespace = usePathNamespace();
 
   const url = '/api/profile';
   const [method, verb] = profile?.id
@@ -35,9 +33,7 @@ export default function ProfileForm({
       method,
       onSuccess: async response => {
         const { profile } = await response.json();
-        router.push(`/${pathNamespace}/`);
         alert.success(`Successfully ${verb} profile.`);
-        router.refresh();
       },
     });
 
@@ -150,11 +146,11 @@ export default function ProfileForm({
           </div>
         </div>
 
-        <div className="row mt-5">
+        <div className="row mt-2">
           <div className="col-12 col-lg-12">
             <FormAction
               disabled={isSubmittingForm}
-              label={`${profile.id ? 'Update' : 'Create'} profile`}
+              label={`${profile.id ? 'Update' : 'Create'} basic information`}
             />
           </div>
         </div>

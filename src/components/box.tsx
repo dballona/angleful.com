@@ -9,7 +9,7 @@ export default function Box({
   subtitleColor,
   children,
 }: {
-  title: string;
+  title?: string;
   subtitle?: string;
   subtitleColor?: Color;
   children: ReactNode;
@@ -19,11 +19,13 @@ export default function Box({
 
   return (
     <div className="w-full p-8 border border-solid border-black border-opacity-15 rounded shadow">
-      <h3>{title}</h3>
+      {title && (
+        <h3>{title}</h3>
+      )}
       {subtitle && (
         <h4 className={subtitleClassNames.join(' ')}>{subtitle}</h4>
       )}
-      <div className="mt-4">{children}</div>
+      {children}
     </div>
   );
 }

@@ -7,16 +7,15 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '900px',
+      sm: '640px', // 40rem
+      md: '768px', // 48rem
+      lg: '896px', // 56rem
     },
     container: {
       center: true,
     },
     fontFamily: {
-      sans: ['var(--font-open-sans)'],
-      serif: ['var(--font-noto-serif)'],
+      sans: ['Open Sans'],
     },
     extend: {},
   },

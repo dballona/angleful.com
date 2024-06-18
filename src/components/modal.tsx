@@ -37,7 +37,7 @@ export default function Modal({
 
   const modalHtmlClasses = [
     "fixed z-50 bg-white border border-solid border-black border-opacity-15 rounded",
-    "p-8 left-1/2 -translate-x-1/2 top-20 shadow"
+    "p-8 left-1/2 -translate-x-1/2 top-20 shadow animate-fade-in"
   ]
 
   const modalCloseHtmlClasses = [

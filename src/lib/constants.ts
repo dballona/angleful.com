@@ -1,20 +1,6 @@
 export const SITE_URL = process.env.SITE_URL;
 export const CONTACT_EMAIL = 'hi@angleful.com';
 
-import { Open_Sans, Noto_Serif } from 'next/font/google';
-
-export const sansFont = Open_Sans({
-  subsets: ['latin'],
-  variable: '--font-open-sans',
-});
-
-export const serifFont = Noto_Serif({
-  subsets: ['latin'],
-  variable: '--font-noto-serif',
-});
-
-export type Color = 'green' | 'yellow' | 'red' | 'purple' | 'sky';
-
 export const MIN_YEAR = 1950;
 export const MAX_YEAR = new Date().getFullYear();
 export const POSSIBLE_YEARS = Array.from(
@@ -23,6 +9,21 @@ export const POSSIBLE_YEARS = Array.from(
 ).reverse();
 
 export const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+]
+
+export const ABBR_MONTH_NAMES = [
   "Jan",
   "Feb",
   "Mar",
@@ -36,3 +37,5 @@ export const MONTH_NAMES = [
   "Nov",
   "Dec"
 ]
+
+export type Color = 'green' | 'yellow' | 'red' | 'purple' | 'sky';

@@ -58,3 +58,13 @@ export async function updateWorkExperience(
     .returningAll()
     .executeTakeFirstOrThrow();
 }
+
+export async function deleteWorkExperience(
+  id: string
+): Promise<void> {
+  await db
+    .deleteFrom('workExperience')
+    .where('id', '=', id)
+    .returningAll()
+    .executeTakeFirstOrThrow();
+}
