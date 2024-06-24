@@ -22,39 +22,7 @@
   body {
     font-weight: theme(fontWeight.light);
     color: theme(colors.slate.700);
-    background: theme(colors.white);
-    
-    &:before {
-      background: radial-gradient(
-        ellipse at top right,
-        rgba(var(--primary-color-rgb), 2%) 0%,
-        transparent 50%,
-        transparent 100%
-      );
-      content: '';
-      width: 50vw;
-      height: 50vh;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: -1;
-    }
-    
-    &:after {
-      background: radial-gradient(
-        ellipse at top left,
-        rgba(var(--primary-color-rgb), 25%) 0%,
-        transparent 50%,
-        transparent 100%
-      );
-      content: '';
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
+    background: theme(colors.slate.100);
   }
 
   h1,
@@ -96,7 +64,7 @@
   strong,
   b,
   label {
-    font-weight: theme(fontWeight.semibold);
+    font-weight: theme(fontWeight.medium);
   }
 
   ::selection {
@@ -224,36 +192,6 @@
       color: theme(colors.sky.600);
       border-color: theme(colors.sky.600);
     }
-  }
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in ease 500ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes fade-out {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  .animate-fade-out {
-    animation: fade-out ease 500ms;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
   }
 }
 

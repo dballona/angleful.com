@@ -10,6 +10,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('account_id', 'uuid', col =>
       col.references('account.id').onDelete('cascade').notNull(),
     )
+    .addColumn('career_path', sql`career_path`, col => col.notNull())
     .addColumn('company_name', 'varchar', col => col.notNull())
     .addColumn('title', 'varchar', col => col.notNull())
     .addColumn('city', 'varchar', col => col.notNull())

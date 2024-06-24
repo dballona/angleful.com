@@ -1,20 +1,22 @@
 'use client';
 
 import { Country } from '@/db/types';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function CountrySelect({
   id,
   name,
   defaultValue,
   required = false,
-  countries
+  countries,
+  onChange
 }: {
   id: string;
   name: string;
   defaultValue?: string;
   required?: boolean;
-  countries: Country[]
+  countries: Country[];
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
 }) {
   const [value, setValue] = useState<string>(defaultValue ?? "US");
 
@@ -24,7 +26,10 @@ export default function CountrySelect({
       name={name}
       required={required}
       defaultValue={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => {
+        setValue(e.target.value)
+        onChange && onChange(e)
+      }}
     >
       {countries.map(country => (
         <option key={country.isoCode} value={country.isoCode}>

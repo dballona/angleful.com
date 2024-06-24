@@ -8,10 +8,16 @@ export default function Badge({
   color: Color;
   children: ReactNode;
 }) {
-  const borderClasses = `border border-solid border-${color}-500`;
+  const borderClasses = ``;
 
   return (
-    <span className={`p-1 rounded ${borderClasses} text-${color}-500 leading-3 uppercase font-semibold`}>
+    <span
+      className={`
+        p-1 rounded 
+        border border-solid border-${color}-500 
+        text-${color}-500 leading-3 uppercase font-semibold
+      `}
+    >
       {children}
     </span>
   );

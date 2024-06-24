@@ -7,24 +7,35 @@ export default function Alert() {
   const alert = useContext(AlertContext);
   const alertText = alert.alertText;
 
-  let alertHtmlClasses = ['text-sm font-normal tracking-tight z-[9999]'];
+  let additionalStyles = []
 
-  if (alert.alert !== AlertStatus.None) {
-    alertHtmlClasses.push.apply(alertHtmlClasses, [
-      "fixed right-4 top-4 w-[20rem] p-3",
-      "bg-white bg-opacity-15 backdrop-blur shadow",
-      "border border-solid rounded",
-      "animate-fade-in"
-    ])
-  }
-
-  if (alert.alert === AlertStatus.None) alertHtmlClasses.push('animate-fade-out')
-  if (alert.alert === AlertStatus.Success) alertHtmlClasses.push('border-green-500 text-green-500');
-  if (alert.alert === AlertStatus.Error) alertHtmlClasses.push('border-red-500 text-red-500');
+  if (alert.alert === AlertStatus.None) additionalStyles.push('hidden')
+  if (alert.alert === AlertStatus.Success) additionalStyles.push('text-green-500');
+  if (alert.alert === AlertStatus.Error) additionalStyles.push('text-red-500');
 
   return (
-    <div className={alertHtmlClasses.join(' ')}>
-      {alertText}
+    <div
+      className={`
+        text-sm font-semibold tracking-tighter z-[9999]
+        fixed bottom-12 left-1/2 -translate-x-1/2 w-[20rem]
+        bg-white bg-opacity-75 backdrop-blur shadow
+        border border-solid border-black border-opacity-10
+        ${additionalStyles.join("")}
+      `
+      }>
+      <div className="grid grid-cols-8">
+        <div className="col-span-7 p-3">
+          {alertText}
+        </div>
+        <div className="col-span-1 text-center">
+          <a
+            onClick={alert.clear}
+            className="block p-3 cursor-pointer"
+          >
+            &times;
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

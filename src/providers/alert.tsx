@@ -50,8 +50,6 @@ export function AlertProvider({ children }: { children: React.ReactNode }) {
         error: (text: string) => {
           setAlertText(text);
           setAlert(AlertStatus.Error);
-          timeoutHandle && clearTimeout(timeoutHandle);
-          setTimeoutHandle(setTimeout(clearAlert, timeout));
         },
         clear: clearAlert,
       }}

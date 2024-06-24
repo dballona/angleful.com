@@ -33,14 +33,14 @@ export default async function AccountHomePage() {
 
         <div className="grid grid-cols-2 gap-8">
           <Box title="Set up manually">
-            <span className="block">
+            <span className="block mt-2">
               Create your profile by providing the required information manually.
             </span>
             <Button href="/account/profile" className="mt-4">Get started</Button>
           </Box>
 
           <Box title="Set up with LinkedIn">
-            <span className="block">
+            <span className="block mt-2">
               Connect your LinkedIn account and we'll pull your profile information.
             </span>
             <Button href={linkedInSignInUrl} className="mt-4">

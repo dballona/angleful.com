@@ -1,8 +1,9 @@
 import { db } from '@/db';
-import { Profile } from '@/db/types';
+import { Profile, CareerPath } from '@/db/types';
 import { z } from 'zod';
 
 const accountId = z.string().uuid();
+const careerPath = z.nativeEnum(CareerPath);
 const firstName = z.string().trim().min(1);
 const lastName = z.string().trim().min(1);
 const city = z.string().trim().min(1);
@@ -14,6 +15,7 @@ const websiteUrl = z.string();
 export const ProfileSchema = z
   .object({
     accountId,
+    careerPath,
     firstName,
     lastName,
     city,

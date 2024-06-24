@@ -10,7 +10,7 @@ async function LinksForAccount() {
   return (
     <>
       <li><Link href="/account/profile">Profile</Link></li>
-      <li><Link href="/account/questionaire">Questionaire</Link></li>
+      <li><Link href="/account/questionnaire">Questionaire</Link></li>
       <li><Link href="/account/resume">Resume</Link></li>
       <li className="mt-4"><Link href="/">Help & Support</Link></li>
     </>
@@ -34,7 +34,7 @@ export default async function Menu() {
 
   const menuHtmlClasses = [
     "w-[var(--menu-width)] min-h-screen items-stretch",
-    "border-r border-solid border-black border-opacity-15 bg-white bg-opacity-30"
+    "border-r border-solid border-black border-opacity-15"
   ]
 
   return (

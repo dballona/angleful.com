@@ -1,17 +1,16 @@
 'use client';
 
-import { useContext } from 'react';
-import { useRouter } from 'next/navigation';
+import { useContext, useState } from 'react';
 
 import AlertContext from '@/providers/alert';
 import FormItem from '@/components/form-item';
 import FormAction from '@/components/form-action';
-import { usePathNamespace } from '@/hooks/routes';
 import { useForm } from '@/hooks/form';
 import { Profile, Country } from '@/db/types';
 import PhoneInput from '@/components/phone-input';
 import { ProfileParams } from '@/models/profile';
-import CountrySelect from './country-select';
+import CountrySelect from '@/components/country-select';
+import CareerPathSelect from '@/components/career-path-select';
 
 export default function ProfileForm({
   profile = {} as Partial<Profile>,
@@ -21,6 +20,7 @@ export default function ProfileForm({
   countries: Country[];
 }) {
   const alert = useContext(AlertContext);
+  const [country, setCountry] = useState<string>('US');
 
   const url = '/api/profile';
   const [method, verb] = profile?.id
@@ -41,6 +41,20 @@ export default function ProfileForm({
     <>
       <form className="form" onSubmit={onSubmit}>
         <div className="grid grid-cols-6 gap-x-4">
+          <div className="col-span-6">
+            <FormItem
+              id="careerPath"
+              label="I am looking for roles as a"
+              errors={validationErrors.careerPath}
+            >
+              <CareerPathSelect
+                id="careerPath"
+                name="careerPath"
+                defaultValue={profile.careerPath}
+              />
+            </FormItem>
+          </div>
+
           <div className="col-span-3">
             <FormItem
               id="firstName"
@@ -96,7 +110,8 @@ export default function ProfileForm({
                 id="country"
                 name="country"
                 countries={countries}
-                defaultValue={profile.country}
+                defaultValue={profile.country || country}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </FormItem>
           </div>
@@ -126,6 +141,7 @@ export default function ProfileForm({
                 id="contactPhone"
                 name="contactPhone"
                 defaultValue={profile.contactPhone ?? undefined}
+                defaultCountry={country}
               />
             </FormItem>
           </div>

@@ -1,9 +1,13 @@
 import { db } from '@/db';
-import { WorkExperience } from '@/db/types';
+import { CareerPath, DB, WorkExperience, WorkExperienceWithQuestions } from '@/db/types';
 import { MAX_YEAR, MIN_YEAR } from '@/lib/constants';
 import { z } from 'zod';
+import { getQuestionsForCareerPath } from './question';
+import { ExpressionBuilder } from 'kysely';
+import { jsonObjectFrom } from 'kysely/helpers/postgres';
 
 const accountId = z.string().uuid();
+const careerPath = z.nativeEnum(CareerPath);
 const companyName = z.string().trim().min(1);
 const title = z.string().trim().min(1);
 const city = z.string().trim().min(1);
@@ -16,6 +20,7 @@ const endYear = z.number().min(MIN_YEAR).max(MAX_YEAR);
 export const WorkExperienceSchema = z
   .object({
     accountId,
+    careerPath,
     companyName,
     title,
     city,
@@ -35,6 +40,18 @@ export async function getWorkExperiencesByAccountId(accountId: string): Promise<
     .where('accountId', '=', accountId)
     .orderBy('endYear desc')
     .execute();
+}
+
+export async function getWorkExperiencesWithQuestionsByAccountId(accountId: string): Promise<WorkExperienceWithQuestions[]> {
+  return await db
+    .selectFrom('workExperience')
+    .selectAll()
+    .where('accountId', '=', accountId)
+    .orderBy('endYear desc')
+    .execute()
+    .then(workExperiences => {
+      return Promise.all(workExperiences.map(transformIntoWorkExperienceWithQuestions));
+    });
 }
 
 export async function createWorkExperience(
@@ -67,4 +84,11 @@ export async function deleteWorkExperience(
     .where('id', '=', id)
     .returningAll()
     .executeTakeFirstOrThrow();
+}
+
+async function transformIntoWorkExperienceWithQuestions(
+  workExperience: WorkExperience,
+): Promise<WorkExperienceWithQuestions> {
+  const questions = await getQuestionsForCareerPath(workExperience.careerPath)
+  return { ...workExperience, questions };
 }

@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import AlertContext from '@/providers/alert';
 import FormItem from '@/components/form-item';
 import FormAction from '@/components/form-action';
-import { usePathNamespace } from '@/hooks/routes';
 import { useForm } from '@/hooks/form';
 import { WorkExperience, Country } from '@/db/types';
 import { WorkExperienceParams } from '@/models/work-experience';
@@ -17,17 +16,20 @@ import Button from './button';
 import { Icon } from './icon';
 import Modal from './modal';
 import { workExperienceTimespan } from '@/helpers/work-experience-helper';
+import CountrySelect from '@/components/country-select';
+import CareerPathSelect from '@/components/career-path-select';
 
 export default function WorkExperienceForm({
   workExperiences,
   countries,
+  defaultCountry
 }: {
   workExperiences: WorkExperience[];
   countries: Country[];
+  defaultCountry?: string;
 }) {
   const router = useRouter();
   const alert = useContext(AlertContext);
-  const pathNamespace = usePathNamespace();
 
   const [workExperience, setWorkExperience] = useState<WorkExperience>({} as WorkExperience);
   const [url, setUrl] = useState<string>("/api/work-experiences");
@@ -131,6 +133,19 @@ export default function WorkExperienceForm({
         >
           <form className="form" onSubmit={onSubmit}>
             <div className="grid grid-cols-4 gap-x-4">
+              <div className="col-span-4">
+                <FormItem
+                  id="careerPath"
+                  label="On this role I was a"
+                  errors={validationErrors.careerPath}
+                >
+                  <CareerPathSelect
+                    id="careerPath"
+                    name="careerPath"
+                    defaultValue={workExperience.careerPath}
+                  />
+                </FormItem>
+              </div>
               <div className="col-span-2">
                 <FormItem
                   id="title"
@@ -182,17 +197,12 @@ export default function WorkExperienceForm({
                   label="Country"
                   errors={validationErrors.country}
                 >
-                  <select
+                  <CountrySelect
                     id="country"
                     name="country"
-                    defaultValue={workExperience.country || 'US'}
-                  >
-                    {countries.map(country => (
-                      <option key={country.isoCode} value={country.isoCode}>
-                        {country.name}
-                      </option>
-                    ))}
-                  </select>
+                    countries={countries}
+                    defaultValue={workExperience.country || defaultCountry}
+                  />
                 </FormItem>
               </div>
 

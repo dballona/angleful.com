@@ -9,6 +9,7 @@ import type { AccountSignInParams } from '@/models/account';
 import FormItem from '@/components/form-item';
 import FormAction from '@/components/form-action';
 import FormHint from '@/components/form-hint';
+import Form from '@/components/form';
 
 export default function AccountSignInForm() {
   const router = useRouter();
@@ -45,7 +46,7 @@ export default function AccountSignInForm() {
   }
 
   return (
-    <form className="form" onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <FormItem id="email" label="Email">
         <input id="email" name="email" type="email" required />
       </FormItem>
@@ -63,6 +64,6 @@ export default function AccountSignInForm() {
         Don&apos;t have an account? <Link href="/sign-up" className="link">Sign up</Link> for
         free. <br />
       </p>
-    </form>
+    </Form>
   );
 }

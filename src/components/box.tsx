@@ -14,16 +14,18 @@ export default function Box({
   subtitleColor?: Color;
   children: ReactNode;
 }) {
-  const subtitleClassNames = ['pt-1'];
-  if (subtitleColor) subtitleClassNames.push(`text-${subtitleColor}-500`);
-
   return (
-    <div className="w-full p-8 border border-solid border-black border-opacity-15 rounded shadow">
+    <div
+      className={`
+        w-full p-8 bg-white rounded shadow
+        border border-solid border-black border-opacity-15
+      `}
+    >
       {title && (
         <h3>{title}</h3>
       )}
       {subtitle && (
-        <h4 className={subtitleClassNames.join(' ')}>{subtitle}</h4>
+        <h4 className={`pt-1 text-${subtitleColor}-500`}>{subtitle}</h4>
       )}
       {children}
     </div>

@@ -53,7 +53,7 @@ export default async function AccountProfilePage() {
 
         <div className="mt-12">
           <h2 className="mb-4">Work Experiences</h2>
-          <WorkExperienceForm workExperiences={workExperiences} countries={countries} />
+          <WorkExperienceForm workExperiences={workExperiences} countries={countries} defaultCountry={profile.country} />
         </div>
       </PageContent>
     </>

@@ -1,3 +1,5 @@
+import { Question, WorkExperience } from "@/db/types/generated";
+
 /**
  * Manually added types for extending generated files.
  */
@@ -10,3 +12,7 @@ export type Country = {
   name: string,
   flag: string
 }
+
+export type WorkExperienceWithQuestions = WorkExperience & {
+  questions: Question[]
+};

@@ -9,9 +9,18 @@ export enum AccountRole {
   Admin = 'Admin',
 }
 
+export enum CareerPath {
+  IndividualContributor = 'IndividualContributor',
+  Manager = 'Manager',
+}
+
 export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
+
+export enum QuestionableType {
+  WorkExperience = 'WorkExperience',
+}
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
@@ -59,6 +68,7 @@ export type Profile = Selectable<ProfileTable>;
 
 export interface ProfileTable {
   accountId: string;
+  careerPath: CareerPath;
   city: string;
   contactEmail: string;
   contactPhone: string | null;
@@ -71,10 +81,23 @@ export interface ProfileTable {
   websiteUrl: string | null;
 }
 
+export type Question = Selectable<QuestionTable>;
+
+export interface QuestionTable {
+  careerPath: CareerPath;
+  createdAt: Generated<Timestamp>;
+  hint: string;
+  id: Generated<string>;
+  question: string;
+  questionableType: QuestionableType;
+  updatedAt: Generated<Timestamp>;
+}
+
 export type WorkExperience = Selectable<WorkExperienceTable>;
 
 export interface WorkExperienceTable {
   accountId: string;
+  careerPath: CareerPath;
   city: string;
   companyName: string;
   country: string;
@@ -93,5 +116,6 @@ export interface DB {
   accountPasswordReset: AccountPasswordResetTable;
   objectStorageFile: ObjectStorageFileTable;
   profile: ProfileTable;
+  question: QuestionTable;
   workExperience: WorkExperienceTable;
 }
